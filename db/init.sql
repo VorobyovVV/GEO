@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS place_ratings (
 CREATE TABLE IF NOT EXISTS reviews (
     id SERIAL PRIMARY KEY,
     place_id INTEGER NOT NULL REFERENCES places(id) ON DELETE CASCADE,
-    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
     rating NUMERIC(2, 1) NOT NULL CHECK (rating >= 0 AND rating <= 5),
     text TEXT,
     created_at TIMESTAMPTZ DEFAULT NOW()
